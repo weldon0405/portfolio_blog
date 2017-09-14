@@ -1,25 +1,36 @@
+{% load staticfiles %}
+
 <html>
     <head>
         <title>Weldon' Blog</title>
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+        <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap-theme.min.css">
+        <link href="https://fonts.googleapis.com/css?family=Eczar|Gentium+Basic" rel="stylesheet">
+        <link rel="stylesheet" href="{% static 'css/blog.css' %}">
+
     </head>
     <body>
-        <div>
-            <h1>I love solving problems and building things.</h1>
+
+        <div class="page-header">
+            <h1>Weldon Malbrough</h1>
+            <h4>Building things, breaking them, and making them better.</h4>
         </div>
 
-        <div>
-            <p>published: 12.09.2017, 19:00</p>
-            <h2><a href="#">My first post</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dui nec mauris iaculis, eu maximus odio tempus. Phasellus fringilla nibh diam, tincidunt tempor ipsum luctus sit amet. Suspendisse vitae enim elementum, commodo sem ac, laoreet sem. Curabitur faucibus enim at vehicula tempor. Vestibulum nec accumsan velit, sit amet cursus dui. Praesent et velit accumsan, euismod mauris et, elementum elit. Maecenas dictum sapien eget accumsan lacinia.</p>
-            <p>Morbi pretium erat tortor, sit amet aliquam mauris volutpat ullamcorper. Ut vitae felis gravida, lacinia ligula sit amet, viverra nibh. Morbi sagittis eget mauris eget gravida. Quisque tincidunt sodales turpis quis ultricies. Ut ut tortor vitae libero blandit ullamcorper. Phasellus sed gravida lacus. Praesent lacus ligula, efficitur et quam congue, convallis posuere quam. Cras lorem orci, euismod eu felis ut, eleifend rhoncus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-            <p>Integer neque libero, porta quis dictum vehicula, convallis a felis. Sed commodo risus sed lectus tristique pellentesque. Donec magna neque, suscipit eu turpis id, pharetra semper dolor. Nunc nulla felis, venenatis eu nunc ac, vulputate facilisis diam. Integer auctor augue eget neque posuere, ut ultrices nunc tincidunt. Sed sodales odio ipsum, vitae commodo nibh consectetur a. Curabitur sem odio, posuere et tellus sit amet, semper aliquam nisl. Integer at ipsum tempus, aliquam sapien sed, tristique risus. Mauris a est blandit, dapibus eros id, mattis leo. Praesent rutrum hendrerit nibh pretium luctus. Praesent id mi elit.</p>        
+        <div class="content container">
+            <div class="row">
+                <div class="col-md-8">
+                    {% for post in posts %}
+                        <div class="post">
+                            <div class="date">
+                                <p>published: {{ post.published_date }}</p>
+                            </div>
+                            <h2><a href="#">{{ post.title }}</a></h2>
+                            <p>{{ post.blog_content|linebreaksbr }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
         </div>
-        <div>
-            <p>published: 12.09.2017, 20:00</p>
-            <h2><a href="#">My second post</a></h2>
-            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam viverra dui nec mauris iaculis, eu maximus odio tempus. Phasellus fringilla nibh diam, tincidunt tempor ipsum luctus sit amet. Suspendisse vitae enim elementum, commodo sem ac, laoreet sem. Curabitur faucibus enim at vehicula tempor. Vestibulum nec accumsan velit, sit amet cursus dui. Praesent et velit accumsan, euismod mauris et, elementum elit. Maecenas dictum sapien eget accumsan lacinia.</p>
-            <p>Morbi pretium erat tortor, sit amet aliquam mauris volutpat ullamcorper. Ut vitae felis gravida, lacinia ligula sit amet, viverra nibh. Morbi sagittis eget mauris eget gravida. Quisque tincidunt sodales turpis quis ultricies. Ut ut tortor vitae libero blandit ullamcorper. Phasellus sed gravida lacus. Praesent lacus ligula, efficitur et quam congue, convallis posuere quam. Cras lorem orci, euismod eu felis ut, eleifend rhoncus eros. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas.</p>
-            <p>Integer neque libero, porta quis dictum vehicula, convallis a felis. Sed commodo risus sed lectus tristique pellentesque. Donec magna neque, suscipit eu turpis id, pharetra semper dolor. Nunc nulla felis, venenatis eu nunc ac, vulputate facilisis diam. Integer auctor augue eget neque posuere, ut ultrices nunc tincidunt. Sed sodales odio ipsum, vitae commodo nibh consectetur a. Curabitur sem odio, posuere et tellus sit amet, semper aliquam nisl. Integer at ipsum tempus, aliquam sapien sed, tristique risus. Mauris a est blandit, dapibus eros id, mattis leo. Praesent rutrum hendrerit nibh pretium luctus. Praesent id mi elit.</p>        
-        </div>
+
     </body>
 </html>
