@@ -70,3 +70,7 @@ color: #212121;
 .post h1 a, .post h1 a:visited {
 color: #212121;
 }
+
+.comment {
+    margin: 20px 0px 20px 20px;
+}
